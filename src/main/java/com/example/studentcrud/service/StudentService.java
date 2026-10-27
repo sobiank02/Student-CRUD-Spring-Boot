@@ -1,4 +1,3 @@
-
 package com.example.studentcrud.service;
 
 import com.example.studentcrud.entity.Student;
@@ -25,6 +24,7 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id) {
+        // Return a clear error when the requested student does not exist.
         return studentRepository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Student not found with id: " + id));
@@ -33,6 +33,7 @@ public class StudentService {
     public Student updateStudent(Long id, Student updatedStudent) {
         Student student = getStudentById(id);
 
+        // Keep the existing ID and update only the student's editable fields.
         student.setName(updatedStudent.getName());
         student.setEmail(updatedStudent.getEmail());
         student.setAge(updatedStudent.getAge());

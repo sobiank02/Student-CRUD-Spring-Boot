@@ -1,4 +1,3 @@
-
 package com.example.studentcrud.entity;
 
 import jakarta.persistence.Entity;
@@ -9,6 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
 
+    // The database creates the ID when a new student is saved.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
