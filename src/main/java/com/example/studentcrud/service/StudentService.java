@@ -1,5 +1,7 @@
+
 package com.example.studentcrud.service;
 
+import com.example.studentcrud.StudentNotFoundException;
 import com.example.studentcrud.entity.Student;
 import com.example.studentcrud.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,8 @@ public class StudentService {
         // Return a clear error when the requested student does not exist.
         return studentRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Student not found with id: " + id));
+                        new StudentNotFoundException(
+                                "Student not found with id: " + id));
     }
 
     public Student updateStudent(Long id, Student updatedStudent) {
